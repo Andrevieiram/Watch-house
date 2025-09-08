@@ -1,0 +1,30 @@
+body {
+    font-family: "Apple Garamond", "Astonpoliz", "Bahnschrift","Arial Narrow",Serif; /* Elegant serif font for a luxurious feel */
+}
+.hero-bg {
+    background: linear-gradient(135deg, #1a1a3e 0%, #16213e 50%, #0f0f23 100%); /* Deep navy gradient for luxury */
+}
+.accent-gold {
+    color: #d4af37; /* Gold for accents */
+}
+.luxury-border {
+    border-bottom: 2px solid #d4af37;
+}
+.product-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+}
+.logo-emoji-free {
+    font-weight: bold;
+    font-size: 1.5rem;
+    color: #d4af37; /* Gold logo */
+}
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .header-nav {
+        flex-direction: column;
+    }
+}

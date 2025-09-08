@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Watch House - Luxo Acessível para Relógios</title>
+    <meta name="description" content="Descubra relógios de estilo e luxo ao alcance da classe média. Explore nossa coleção premium em Watch House."/>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Import FontAwesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"/>
+    <link rel="stylesheet" href="css/main-page.css"/>
+</head>
+
+<body class="bg-white text-gray-900">
+<!-- Seção do cabeçalho -->
+<header class="hero-bg text-white shadow-lg">
+    <div class="container mx-auto px-4 py-4 flex justify-between items-center header-nav">
+        <!-- Logo -->
+        <div class="logo-emoji-free">
+            Watch House
+        </div>
+        <!-- Menu de navegação -->
+        <nav class="flex space-x-6">
+            <a href="#" class="hover:accent-gold transition-colors duration-300">Início</a>
+            <a href="#" class="hover:accent-gold transition-colors duration-300">Relógios Masculinos</a>
+            <a href="#" class="hover:accent-gold transition-colors duration-300">Relógios Femininos</a>
+            <a href="#" class="hover:accent-gold transition-colors duration-300">Luxo Acessível</a>
+            <a href="#" class="hover:accent-gold transition-colors duration-300">Sobre Nós</a>
+        </nav>
+        <!-- Barra de pesquisa -->
+        <div class="flex items-center space-x-4">
+            <input type="text" placeholder="Buscar relógios..." class="px-3 py-1 rounded-md bg-gray-700 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-accent-gold">
+            <a href="#" class="text-2xl hover:accent-gold transition-colors duration-300">
+                <i class="fas fa-shopping-cart"></i> <!-- Cart icon -->
+            </a>
+        </div>
+    </div>
+</header>
+
+<!-- Seção principal: grid de produtos -->
+<main class="bg-gray-50">
+    <!-- seção hero -->
+    <section class="hero-bg text-center py-12 px-4">
+        <h1 class="text-4xl md:text-6xl font-bold text-white mb-4">Bem-vindo ao Watch House</h1>
+        <p class="text-lg md:text-xl accent-gold mb-6">Estilo e luxo ao alcance da classe média. Descubra relógios que combinam elegância e acessibilidade.</p>
+        <a href="#products" class="bg-accent-gold text-navy px-8 py-3 rounded-full font-semibold hover:bg-opacity-90 transition-all duration-300">Explorar Coleção</a>
+    </section>
+
+    <!-- Seção de grid de produtos  -->
+    <section id="products" class="container mx-auto px-4 py-12">
+        <h2 class="text-3xl font-bold text-center mb-8 text-gray-800">Nossa Seleção Premium</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+            <!-- Produto 1 -->
+            <div class="bg-white rounded-lg shadow-md overflow-hidden product-card">
+                <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/08095e87-53b4-4246-8ccf-9400bb1deb2b.png" alt="Elegant black leather strap men's watch with silver dial and gold accents, minimalist design for luxury and everyday style" class="w-full h-48 object-cover" onload="this.style.display='block'" onerror="this.style.display='none'; this.nextSibling.style.display='block'">
+                <div class="p-4">
+                    <h3 class="font-semibold text-lg text-gray-800">Relógio Masculino Clássico</h3>
+                    <p class="text-accent-gold text-sm mb-2">Luxo Acessível</p>
+                    <p class="text-gray-600 mb-4">Design sofisticado com pulseira de couro preto e detalhes em ouro.</p>
+                    <span class="text-xl font-bold text-gray-900">R$ 450,00</span>
+                    <button class="mt-2 w-full bg-hero-bg text-white py-2 rounded-md hover:bg-accent-gold hover:text-navy transition-colors duration-300">Adicionar ao Carrinho</button>
+                </div>
+            </div>
+            <!-- Produto 2 -->
+            <div class="bg-white rounded-lg shadow-md overflow-hidden product-card">
+                <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/6f4c48d0-cf47-4c79-a105-f2d488813518.png" alt="Stylish rose gold women's watch with white dial, crystal embellishments, and slim leather strap for feminine elegance and affordable luxury" class="w-full h-48 object-cover" onload="this.style.display='block'" onerror="this.style.display='none'; this.nextSibling.style.display='block'">
+                <div class="p-4">
+                    <h3 class="font-semibold text-lg text-gray-800">Relógio Feminino Elegante</h3>
+                    <p class="text-accent-gold text-sm mb-2">Estilo Moderna</p>
+                    <p class="text-gray-600 mb-4">Pulseira fina em couro rosa e mostrador brilhante.</p>
+                    <span class="text-xl font-bold text-gray-900">R$ 380,00</span>
+                    <button class="mt-2 w-full bg-hero-bg text-white py-2 rounded-md hover:bg-accent-gold hover:text-navy transition-colors duration-300">Adicionar ao Carrinho</button>
+                </div>
+            </div>
+            <!-- Produto 3 -->
+            <div class="bg-white rounded-lg shadow-md overflow-hidden product-card">
+                <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/69ee90a9-024e-4879-b8f2-d234cc85e226.png" alt="Premium aviator-style men's chronograph watch with black leather strap, stainless steel case, and multiple subdials for sporty luxury look" class="w-full h-48 object-cover" onload="this.style.display='block'" onerror="this.style.display='none'; this.nextSibling.style.display='block'">
+                <div class="p-4">
+                    <h3 class="font-semibold text-lg text-gray-800">Relógio Sport Luxo</h3>
+                    <p class="text-accent-gold text-sm mb-2">Aventura e Estilo</p>
+                    <p class="text-gray-600 mb-4">Cronógrafo resistente com caixa em aço inox.</p>
+                    <span class="text-xl font-bold text-gray-900">R$ 620,00</span>
+                    <button class="mt-2 w-full bg-hero-bg text-white py-2 rounded-md hover:bg-accent-gold hover:text-navy transition-colors duration-300">Adicionar ao Carrinho</button>
+                </div>
+            </div>
+            <!-- Produto 4 -->
+            <div class="bg-white rounded-lg shadow-md overflow-hidden product-card">
+                <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/ec31f58c-0c7a-431a-a3c8-6b019a4f9386.png" alt="Delicate silver-bracelet women's watch with minimalist dial, small diamonds accents, and chain strap for classic feminine luxury" class="w-full h-48 object-cover" onload="this.style.display='block'" onerror="this.style.display='none'; this.nextSibling.style.display='block'">
+                <div class="p-4">
+                    <h3 class="font-semibold text-lg text-gray-800">Relógio Branco Dourado</h3>
+                    <p class="text-accent-gold text-sm mb-2">Elegância Clássica</p>
+                    <p class="text-gray-600 mb-4">Pulseira fina e detalhes discretos em cristal.</p>
+                    <span class="text-xl font-bold text-gray-900">R$ 520,00</span>
+                    <button class="mt-2 w-full bg-hero-bg text-white py-2 rounded-md hover:bg-accent-gold hover:text-navy transition-colors duration-300">Adicionar ao Carrinho</button>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+<!-- Seção do rodapé -->
+<footer class="hero-bg text-white py-8 px-4">
+    <div class="container mx-auto flex flex-col md:flex-row justify-between items-center">
+        <div class="mb-4 md:mb-0">
+            <h3 class="text-xl font-bold mb-2">Watch House</h3>
+            <p>Luxo ao alcance. Qualidade e estilo para todos.</p>
+        </div>
+        <div class="flex space-x-6">
+            <a href="#" class="hover:accent-gold transition-colors duration-300">Contato</a>
+            <a href="#" class="hover:accent-gold transition-colors duration-300">Política de Privacidade</a>
+            <a href="#" class="hover:accent-gold transition-colors duration-300">Termos de Uso</a>
+            <a href="#" class="hover:accent-gold transition-colors duration-300"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="hover:accent-gold transition-colors duration-300"><i class="fab fa-instagram"></i></a>
+        </div>
+    </div>
+    <div class="text-center mt-4 luxury-border pt-4">
+        <p>© 2023 Watch House. Todos os direitos reservados.</p>
+    </div>
+</footer>
+</body>
+</html>
