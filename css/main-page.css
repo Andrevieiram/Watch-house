@@ -256,10 +256,6 @@ body.body {
     flex-direction: column;
 }
 
-.quantity{
-    font-size: 14px;
-}
-
 .product-title {
     font-weight: 600;
     font-size: 1.125rem;
@@ -367,10 +363,6 @@ body.body {
     padding-top: 1rem;
     border-top: 2px solid #d4af37;
     font-size: 0.875rem;
-}
-
-.open-product-page{
-    text-decoration: none;
 }
 
 @media (max-width: 768px) {
