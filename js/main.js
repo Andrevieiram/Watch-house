@@ -1,4 +1,3 @@
-
 document.addEventListener('DOMContentLoaded', () => {
     renderProducts();
     setupAddToCartButtons();
@@ -7,6 +6,9 @@ document.addEventListener('DOMContentLoaded', () => {
 function renderProducts() {
     const premiumGrid = document.getElementById('premium-grid');
     const bestsellersGrid = document.getElementById('bestsellers-grid');
+    
+    premiumGrid.innerHTML = '';
+    bestsellersGrid.innerHTML = '';
 
     products.forEach(product => {
         const productCardHTML = `
@@ -24,28 +26,26 @@ function renderProducts() {
                 </div>
             </div>
         `;
-        // Adicionando os cards nas seções corretas
-        if (product.tags?.includes('premium')) {
+        
+        // Adicionando card na seções
+        if (product.tags.includes('premium')) {
             premiumGrid.innerHTML += productCardHTML;
         }
-        if (product.tags?.includes('bestseller')) {
+        if (product.tags.includes('bestseller')) {
             bestsellersGrid.innerHTML += productCardHTML;
         }
     });
 }
 
-// Configurando os botões "Adicionar ao Carrinho"
 function setupAddToCartButtons() {
-    const buttons = document.querySelectorAll('.btn-add-cart');
-    buttons.forEach(button => {
-        button.addEventListener('click', (event) => {
+    document.body.addEventListener('click', function(event) {
+        if (event.target && event.target.matches('.btn-add-cart')) {
             const productId = event.target.dataset.id;
             addToCart(productId);
-        });
+        }
     });
 }
 
-// Adicionando um item ao carrinho
 function addToCart(productId) {
     let cart = JSON.parse(localStorage.getItem('shoppingCart')) || [];
     const existingProductIndex = cart.findIndex(item => item.id === productId);
