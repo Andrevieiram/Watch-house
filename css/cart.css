@@ -139,6 +139,10 @@
 }
 
 .btn-checkout {
+    display: inline-block; 
+    text-align: center;
+    text-decoration: none; 
+
     width: 100%;
     padding: 1rem;
     font-size: 1.1rem;

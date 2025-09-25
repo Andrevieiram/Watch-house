@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Finalizar Compra - Watch House</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"/>
+    <link rel="stylesheet" href="css/main.css"/>
+    <link rel="stylesheet" href="css/checkout.css"/>
+</head>
+<body class="body">
+
+<header class="header-bg-image hero-bg text-white shadow-lg relative">
+    <div class="container header-nav">
+        <a href="index.html" class="logo-emoji-free" style="text-decoration: none;">Watch House</a>
+        <div class="search-cart">
+            <a href="cart.html" class="cart-icon">
+                <i class="fas fa-shopping-cart"></i>
+            </a>
+        </div>
+    </div>
+</header>
+
+<main class="container checkout-page">
+    <h1>Finalizar Compra</h1>
+    
+    <form id="checkout-form" class="checkout-form" novalidate>
+        <fieldset>
+            <legend>Endereço de Entrega</legend>
+
+            <div class="form-group">
+                <label for="cep">CEP</label>
+                <input type="text" id="cep" name="cep" placeholder="00000-000" maxlength="9" required>
+                <div id="cep-status" class="status-message" aria-live="polite"></div>
+            </div>
+
+            <div class="form-group">
+                <label for="rua">Rua</label>
+                <input type="text" id="rua" name="rua" required>
+            </div>
+            
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="numero">Número</label>
+                    <input type="text" id="numero" name="numero" required>
+                </div>
+                <div class="form-group">
+                    <label for="bairro">Bairro</label>
+                    <input type="text" id="bairro" name="bairro" required>
+                </div>
+            </div>
+            
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="cidade">Cidade</label>
+                    <input type="text" id="cidade" name="cidade" required>
+                </div>
+                <div class="form-group uf-group">
+                    <label for="uf">UF</label>
+                    <input type="text" id="uf" name="uf" maxlength="2" required>
+                </div>
+            </div>
+
+        </fieldset>
+
+        <button type="submit" class="btn-submit">Finalizar Compra</button>
+    </form>
+</main>
+
+<footer class="hero-bg footer">
+    <div class="container footer-content">
+        <p>© 2025 Watch House. Todos os direitos reservados.</p>
+    </div>
+</footer>
+
+<script src="js/checkout.js"></script>
+
+</body>
+</html>
