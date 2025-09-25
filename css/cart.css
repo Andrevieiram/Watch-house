@@ -82,8 +82,30 @@
     margin-left: 1rem;
 }
 
+.continue-shopping-container {
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid #e0e0e0;
+    text-align: left;
+}
+
+.btn-secondary {
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    background-color: #1f2937; 
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+.btn-secondary:hover {
+    background-color: #5a6268;
+}
+
 .order-summary-box {
-    flex: 1; /* Ocupa 1/3 do espaço */
+    flex: 1; 
     background-color: #f9f9f9;
     padding: 2rem;
     border-radius: 8px;

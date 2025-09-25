@@ -1,5 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
     renderCart();
+    setupCartInteractions(); 
 });
 
 function renderCart() {
@@ -18,9 +19,13 @@ function renderCart() {
                 <a href="index.html" class="btn-primary">Voltar à Loja</a>
             </div>
         `;
+        orderSummaryContainer.style.display = 'none'; // Esconde o resumo
         return;
     }
 
+    // Se houver itens, garante que o resumo do pedido seja exibido
+    orderSummaryContainer.style.display = 'block';
+    
     let subtotal = 0;
     let totalItems = 0;
 
@@ -32,27 +37,33 @@ function renderCart() {
             totalItems += item.quantity;
 
             cartItemsContainer.innerHTML += `
-                <div class="cart-item">
+                <div class="cart-item" data-product-id="${product.id}">
                     <img src="${product.imageSrc}" alt="${product.imageAlt}" class="item-image">
                     <div class="item-details">
                         <h3 class="item-name">${product.name}</h3>
                         <p class="item-price">R$ ${product.price.toFixed(2).replace('.', ',')}</p>
                     </div>
                     <div class="item-quantity-controls">
-                        <button class="quantity-btn" data-id="${product.id}">-</button>
+                        <button class="quantity-btn">-</button>
                         <input type="text" class="quantity-input" value="${item.quantity}" readonly>
-                        <button class="quantity-btn" data-id="${product.id}">+</button>
+                        <button class="quantity-btn">+</button>
                     </div>
-                    <button class="remove-item-btn" data-id="${product.id}"><i class="fas fa-trash"></i></button>
+                    <button class="remove-item-btn"><i class="fas fa-trash"></i></button>
                 </div>
             `;
         }
     });
 
+    cartItemsContainer.innerHTML += `
+        <div class="continue-shopping-container">
+            <a href="index.html" class="btn-secondary">Continuar Comprando</a>
+        </div>
+    `;
+
     orderSummaryContainer.innerHTML = `
         <h2>Resumo do Pedido</h2>
         <div class="summary-row">
-            <span>Subtotal (${totalItems} itens)</span>
+            <span>Subtotal (${totalItems} ${totalItems > 1 ? 'itens' : 'item'})</span>
             <span>R$ ${subtotal.toFixed(2).replace('.', ',')}</span>
         </div>
         <div class="summary-row">
@@ -65,4 +76,31 @@ function renderCart() {
         </div>
         <button class="btn-checkout">Finalizar Compra</button>
     `;
+}
+
+
+function setupCartInteractions() {
+    const cartItemsContainer = document.querySelector('.cart-items-list');
+
+    cartItemsContainer.addEventListener('click', function(event) {
+        // Encontra o botão de remover mais próximo do local onde o usuário clicou
+        const removeButton = event.target.closest('.remove-item-btn');
+
+        if (removeButton) {
+            // Encontra o elemento do item inteiro para pegar o ID do produto
+            const cartItem = removeButton.closest('.cart-item');
+            const productId = cartItem.dataset.productId;
+            removeFromCart(productId);
+        }
+    });
+}
+
+
+function removeFromCart(productId) {
+    let cart = JSON.parse(localStorage.getItem('shoppingCart')) || [];
+    const updatedCart = cart.filter(item => item.id !== productId);
+    
+    localStorage.setItem('shoppingCart', JSON.stringify(updatedCart));
+
+    renderCart();
 }
