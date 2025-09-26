@@ -2,12 +2,10 @@
 import { rawProductsData } from './products.js';
 import { Product, ProductManager } from "./product.js";
 
-const productInstances = rawProductsData.map(data => new Product(data));
+export const productInstances = rawProductsData.map(data => new Product(data));
 
 const appManager = new ProductManager(productInstances);
 
 appManager.init();
-
-appManager.setupSearch();
 
 

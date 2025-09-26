@@ -17,17 +17,18 @@ export class Product{
     toHTML() {
         return `
             <div class="product-card">
-                <a href="#" class="open-product-page">
-                    <img src="${this.imageSrc}" alt="${this.imageAlt}" class="product-image">
+                <a href="#" class="open-product-page" data-product-id="${this.id}">
+                        <img src="${this.imageSrc}" alt="${this.imageAlt}" class="product-image">
+                    
+                    <div class="product-info" >
+                     
+                            <h3 class="product-title">${this.name}</h3>
+                            <p class="product-category">${this.category}</p>
+                            <span class="product-price">R$ ${this.price.toFixed(2).replace('.', ',')}</span>
+                    </div>        
                 </a>
-                <div class="product-info">
-                    <a href="#" class="open-product-page">
-                        <h3 class="product-title">${this.name}</h3>
-                        <p class="product-category">${this.category}</p>
-                        <span class="product-price">R$ ${this.price.toFixed(2).replace('.', ',')}</span>
-                    </a>
                     <button class="btn-add-cart" data-id="${this.id}">Adicionar ao Carrinho</button>
-                </div>
+                
             </div>
         `;
     }
@@ -47,6 +48,8 @@ export class ProductManager {
         document.addEventListener('DOMContentLoaded', () => {
             this.renderProducts();
             this.setupAddToCartButtons();
+            this.setupSearch();
+            this.setupProductPageListeners();
         });
     }
 
@@ -63,20 +66,35 @@ export class ProductManager {
 
             const isSearchMode = searchTerm !== null;
 
-            premiumGrid.innerHTML = '';
-            bestsellersGrid.innerHTML = '';
-            mainProductGrid.innerHTML = '';
-
             // Visibilidade dos grid's
             const visibility = isSearchMode ? 'none' : 'grid'; // Controla grids
             const titleVisibility = isSearchMode ? 'none' : 'block'; // Controla títulos
 
-            premiumGrid.style.display = visibility;
-            bestsellersGrid.style.display = visibility;
-            premiumTitle.style.display = titleVisibility;
-            bestsellersTitle.style.display = titleVisibility;
+            if (premiumGrid) {
+                premiumGrid.style.display = visibility;
+                premiumGrid.innerHTML = '';
+            }
+            if (bestsellersGrid) {
+                bestsellersGrid.style.display = visibility;
+                bestsellersGrid.innerHTML = '';
+            }
+            if (premiumTitle) {
+                premiumTitle.style.display = titleVisibility;
+            }
+            if (bestsellersTitle) {
+                bestsellersTitle.style.display = titleVisibility;
+            }
 
-            mainProductSection.style.display = isSearchMode ? 'block' : 'none';
+            if (mainProductSection) {
+                mainProductSection.style.display = isSearchMode ? 'block' : 'none';
+            }
+            if (mainProductGrid) {
+                mainProductGrid.innerHTML = '';
+            }
+
+            if (mainProductSection) {
+                mainProductSection.style.display = isSearchMode ? 'block' : 'none';
+            }
 
             // Renderização dos grid's
             if (isSearchMode) {
@@ -96,10 +114,10 @@ export class ProductManager {
                 productsToRender.forEach(product => {
                     const productCardHTML = product.toHTML();
 
-                    if (product.tags.includes('premium')) {
+                    if (product.tags.includes('premium') && premiumGrid) {
                         premiumGrid.innerHTML += productCardHTML;
                     }
-                    if (product.tags.includes('bestseller')) {
+                    if (product.tags.includes('bestseller') && bestsellersGrid) {
                         bestsellersGrid.innerHTML += productCardHTML;
                     }
                 });
@@ -137,7 +155,7 @@ export class ProductManager {
                     this.addToCart(productId);
                 }
             });
-            console.log("Listeners de 'Adicionar ao Carrinho' configurados via delegação.");
+            console.log("Listeners de 'Adicionar ao Carrinho' configurados com sucesso.");
 
         } catch (error) {
             console.warn("Aviso: Falha ao configurar listeners de eventos.", error.message);
@@ -168,6 +186,25 @@ export class ProductManager {
         });
 
         this.renderProducts(filteredProducts, searchTerm);
+    }
+
+    setupProductPageListeners() {
+        document.body.addEventListener('click', (event) => {
+            const target = event.target.closest('.open-product-page');
+
+            if (target) {
+                event.preventDefault();
+
+                const productId = target.dataset.productId;
+
+                if (productId) {
+                    console.log(`Abrindo detalhes para o produto ID: ${productId}`);
+
+                    window.location.href = `product-details.html?id=${productId}`;
+                }
+            }
+        });
+        console.log("Listener para abrir detalhes configurado com sucesso.");
     }
     }
 
