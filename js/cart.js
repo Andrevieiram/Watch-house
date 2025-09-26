@@ -1,6 +1,13 @@
+import { rawProductsData } from './products.js';
+import { Product } from './product.js';
+
+const products = rawProductsData.map(data => new Product(data));
+
 document.addEventListener('DOMContentLoaded', () => {
-    renderCart();
-    setupCartInteractions();
+    if (document.querySelector('.cart-items-list')) {
+        renderCart();
+        setupCartInteractions();
+    }
 });
 
 function renderCart() {
@@ -77,6 +84,7 @@ function renderCart() {
 }
 
 
+
 function setupCartInteractions() {
     const cartItemsContainer = document.querySelector('.cart-items-list');
     
@@ -125,3 +133,4 @@ function removeFromCart(productId) {
     localStorage.setItem('shoppingCart', JSON.stringify(updatedCart));
     renderCart(); 
 }
+

@@ -1,4 +1,4 @@
-const products = [
+export const rawProductsData = [
     {
         id: 1,
         name: 'Relógio Masculino Clássico',

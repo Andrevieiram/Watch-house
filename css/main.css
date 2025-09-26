@@ -48,6 +48,10 @@ body {
     text-decoration: none;
 }
 
+.logo-btn {
+    text-decoration: none;
+}
+
 .nav-menu {
     display: flex;
     gap: 1.5rem;
