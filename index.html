@@ -17,7 +17,7 @@
         </div>
         <nav class="nav-menu"></nav>
         <div class="search-cart">
-            <input type="text" placeholder="Buscar relógios..." class="search-input">
+            <input type="text" placeholder="Buscar relógios..." class="search-input" id="search">
             <a href="cart.html" class="cart-icon">
                 <i class="fas fa-shopping-cart"></i>
             </a>
@@ -33,13 +33,18 @@
     </section>
 
     <section id="premium-products" class="container products-section">
-        <h2 class="section-title">Nossa Seleção Premium</h2>
+        <h2 class="section-title" id="premium-title">Nossa Seleção Premium</h2>
         <div id="premium-grid" class="products-grid"></div>
     </section>
 
     <section id="more-products" class="container products-section">
-        <h2 class="section-title">Relógios mais vendidos</h2>
+        <h2 class="section-title" id="bestsellers-title">Relógios mais vendidos</h2>
         <div id="bestsellers-grid" class="products-grid"></div>
+    </section>
+
+    <section id="main-product" class="container products-section" style="display: none;">
+        <h2 class="section-title" id="search-title"></h2>
+        <div id="main-product-grid" class="products-grid"></div>
     </section>
 
 </main>

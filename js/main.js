@@ -7,3 +7,7 @@ const productInstances = rawProductsData.map(data => new Product(data));
 const appManager = new ProductManager(productInstances);
 
 appManager.init();
+
+appManager.setupSearch();
+
+

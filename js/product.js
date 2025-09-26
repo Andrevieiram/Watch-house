@@ -50,34 +50,63 @@ export class ProductManager {
         });
     }
 
-    renderProducts() {
+    renderProducts(productsToRender = this.products, searchTerm = null) {
         try {
             const premiumGrid = document.getElementById('premium-grid');
             const bestsellersGrid = document.getElementById('bestsellers-grid');
+            const mainProductSection = document.getElementById('main-product');
+            const mainProductGrid = document.getElementById('main-product-grid');
 
-            // Verifica se as grids existem. Se não existirem, lança um erro para o bloco catch.
-            if (!premiumGrid || !bestsellersGrid) {
-                throw new Error("Elementos de grid ('premium-grid' ou 'bestsellers-grid') não foram encontrados no DOM.");
-            }
+            const premiumTitle = document.getElementById('premium-title');
+            const bestsellersTitle = document.getElementById('bestsellers-title');
+            const searchTitle = document.getElementById('search-title');
+
+            const isSearchMode = searchTerm !== null;
 
             premiumGrid.innerHTML = '';
             bestsellersGrid.innerHTML = '';
+            mainProductGrid.innerHTML = '';
 
-            // A iteração (forEach) também pode falhar se this.products não for um array válido
-            this.products.forEach(product => {
-                const productCardHTML = product.toHTML();
+            // Visibilidade dos grid's
+            const visibility = isSearchMode ? 'none' : 'grid'; // Controla grids
+            const titleVisibility = isSearchMode ? 'none' : 'block'; // Controla títulos
 
-                if (product.tags.includes('premium')) {
-                    premiumGrid.innerHTML += productCardHTML;
-                }
-                if (product.tags.includes('bestseller')) {
-                    bestsellersGrid.innerHTML += productCardHTML;
-                }
-            });
+            premiumGrid.style.display = visibility;
+            bestsellersGrid.style.display = visibility;
+            premiumTitle.style.display = titleVisibility;
+            bestsellersTitle.style.display = titleVisibility;
+
+            mainProductSection.style.display = isSearchMode ? 'block' : 'none';
+
+            // Renderização dos grid's
+            if (isSearchMode) {
+                // Modo de busca
+                const resultsCount = productsToRender.length;
+
+                searchTitle.textContent = resultsCount > 0
+                    ? `Resultados da busca por "${searchTerm}" (${resultsCount})`
+                    : `Nenhum resultado encontrado para "${searchTerm}"`;
+
+                productsToRender.forEach(product => {
+                    mainProductGrid.innerHTML += product.toHTML();
+                });
+
+            } else {
+                // Modo de exibição dos grid's premium e best seller
+                productsToRender.forEach(product => {
+                    const productCardHTML = product.toHTML();
+
+                    if (product.tags.includes('premium')) {
+                        premiumGrid.innerHTML += productCardHTML;
+                    }
+                    if (product.tags.includes('bestseller')) {
+                        bestsellersGrid.innerHTML += productCardHTML;
+                    }
+                });
+            }
 
         } catch (error) {
-
-            document.body.innerHTML = '<h1>Houve um erro ao carregar o catálogo.</h1>';
+            console.error("Erro durante a renderização:", error);
         }
     }
 
@@ -114,5 +143,32 @@ export class ProductManager {
             console.warn("Aviso: Falha ao configurar listeners de eventos.", error.message);
         }
     }
+
+    //Lógica de busca de produtos
+    setupSearch() {
+        const searchInput = document.getElementById('search');
+
+        if (searchInput) {
+            searchInput.addEventListener('input', () => this.handleSearch(searchInput.value));
+
+            console.log("Listener de busca em tempo real configurado.");
+        }
     }
+
+    handleSearch(query){
+        const searchTerm = query.toLowerCase().trim();
+        if (searchTerm === "") {
+            this.renderProducts(this.products);
+            return;
+        }
+
+        const filteredProducts = this.products.filter(product => {
+            const productName = product?.name ?? "";
+            return productName.toLowerCase().includes(searchTerm);
+        });
+
+        this.renderProducts(filteredProducts, searchTerm);
+    }
+    }
+
 
